@@ -1,5 +1,5 @@
-jdk:
-  - temurin17
 install:
+  - ls /usr/lib/jvm/ || true
+  - ls ~/.sdkman/candidates/java/ || true
   - sed -i 's/\r$//' gradlew && chmod +x gradlew
-  - ./gradlew :llamaCpp:publishToMavenLocal --no-daemon -x lint -x test
+  - JAVA_HOME=~/.sdkman/candidates/java/current ./gradlew :llamaCpp:publishToMavenLocal --no-daemon -x lint -x test
