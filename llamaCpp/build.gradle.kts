@@ -18,14 +18,18 @@ mavenPublishing {
 }
 
 signing {
-    useGpgCmd()
+    if (System.getenv("JITPACK") == null) {
+        useGpgCmd()
+    }
 }
 
-// Hook signing into publications
+// Hook signing into publications (JitPack has no GPG keys)
 publishing {
     publications {
         withType<MavenPublication> {
-            signing.sign(this)
+            if (System.getenv("JITPACK") == null) {
+                signing.sign(this)
+            }
         }
     }
 }
