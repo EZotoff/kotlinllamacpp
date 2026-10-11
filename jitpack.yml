@@ -1,5 +1,5 @@
 jdk:
-  - openjdk17
+  - temurin17
 install:
   - sed -i 's/\r$//' gradlew && chmod +x gradlew
   - ./gradlew :llamaCpp:publishToMavenLocal --no-daemon -x lint -x test
