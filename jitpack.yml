@@ -1,7 +1,5 @@
 jdk:
   - openjdk17
-before_install:
-  - sdk install java 17.0.12-open || true
 install:
   - sed -i 's/\r$//' gradlew && chmod +x gradlew
   - ./gradlew :llamaCpp:publishToMavenLocal --no-daemon -x lint -x test
